@@ -13,6 +13,10 @@ namespace DesignPatterns
             Console.WriteLine();
 
             FactoryMethodWork();
+
+            Console.WriteLine();
+
+            BridgeWork();
         }
 
         public static void SingltonWork()
@@ -48,5 +52,21 @@ namespace DesignPatterns
             militaryRobot.IntroduceYourself();
         }
 
+        public static void BridgeWork()
+        {
+            IDataSource dbSource = new DataBaseSource();
+            DataSender dataSender = new TelegramSender(dbSource);
+            dataSender.SendData();
+
+            dataSender.SetDataSource(new FileSource());
+            dataSender.SendData();
+
+            dataSender = new EmailSender(new FileSource());
+            dataSender.SendData();
+
+            dataSender = new FaxSender();
+            dataSender.SetDataSource(dbSource);
+            dataSender.SendData();
+        }
     }
 }
