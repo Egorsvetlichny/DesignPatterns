@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesignPatterns.CreationalPatterns
 {
@@ -28,7 +24,7 @@ namespace DesignPatterns.CreationalPatterns
             }
         }
 
-        public void ConnecrToDb()
+        public void ConnectToDb()
         {
             Console.WriteLine($"Подключение к базе данных из объекта {instance}");
         }
